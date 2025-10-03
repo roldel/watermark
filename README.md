@@ -43,5 +43,5 @@ DPI_FOR_RASTERIZATION = 300
 Apply the watermark
 
 ```sh
-python main.py
+python watermark.py <file_to_watermark>
 ```
