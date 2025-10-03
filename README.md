@@ -30,6 +30,12 @@ You can now watermark any PDF or image file directly from the command line:
 ```sh
 python watermark.py input_image/PDF_TestPage.pdf
 ```
+Or process multiple files in one run:
+
+```sh
+python watermark.py file1.jpg file2.pdf file3.png
+```
+
 By default this will:
 
 - Save the result in output_image/
@@ -82,12 +88,12 @@ python watermark.py --help
 Example output:
 
 ```sh
-usage: watermark.py [-h] [-o OUTPUT_DIR] [-t TEXT] [-s SIZE] [-a ANGLE] [-p OPACITY] [-d DENSITY] [--dpi DPI] input_file
+usage: watermark.py [-h] [-o OUTPUT_DIR] [-t TEXT] [-s SIZE] [-a ANGLE] [-p OPACITY] [-d DENSITY] [--dpi DPI] input_files [input_files ...]
 
-Apply a rasterized watermark to an image or PDF file.
+Apply a rasterized watermark to image(s) or PDF(s).
 
 positional arguments:
-  input_file            Path to input image or PDF
+  input_files           Path(s) to input image(s) or PDF(s)
 
 options:
   -h, --help            show this help message and exit

@@ -200,9 +200,12 @@ def process_file_with_watermark(input_filepath: Path, output_dir: Path,
 # --- Command-line Interface ---
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Apply a rasterized watermark to an image or PDF file."
+        description="Apply a rasterized watermark to image(s) or PDF(s)."
     )
-    parser.add_argument("input_file", type=Path, help="Path to input image or PDF")
+    parser.add_argument(
+        "input_files", type=Path, nargs="+",
+        help="Path(s) to input image(s) or PDF(s)"
+    )
     parser.add_argument("-o", "--output-dir", type=Path, default=OUTPUT_DIR,
                         help=f"Output directory (default: {OUTPUT_DIR})")
     parser.add_argument("-t", "--text", type=str, default=WATERMARK_TEXT,
@@ -221,7 +224,16 @@ if __name__ == "__main__":
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"Processing '{args.input_file.name}' with watermark '{args.text}'...")
-    process_file_with_watermark(args.input_file, args.output_dir,
-                                args.text, args.size, args.angle,
-                                args.opacity, args.density, args.dpi)
+    for input_file in args.input_files:
+        print("=" * 60)
+        print(f"Starting processing: {input_file.name}")
+        try:
+            process_file_with_watermark(
+                input_file, args.output_dir,
+                args.text, args.size, args.angle,
+                args.opacity, args.density, args.dpi
+            )
+            print(f"Finished: {input_file.name}")
+        except Exception as e:
+            print(f"Error processing {input_file.name}: {e}")
+        print("=" * 60 + "\n")
