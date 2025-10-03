@@ -1,0 +1,1 @@
+Files to be watermarked should be placed in this directory
