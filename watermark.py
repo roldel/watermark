@@ -14,8 +14,8 @@ import sys
 
 # --- Configuration Defaults ---
 OUTPUT_DIR = Path("output_image")
-WATERMARK_TEXT = "Rent renewal"
-WATERMARK_SIZE = 40
+WATERMARK_TEXT = "Contract renewal Agency XYZ 010125"
+WATERMARK_SIZE = 20
 WATERMARK_ANGLE = 45
 WATERMARK_OPACITY = 0.15
 WATERMARK_DENSITY = 100
